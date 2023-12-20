@@ -20,7 +20,7 @@ func main() {
 		})
 	})
 
-	app.Listen(":3000")
+	app.Listen(":8080")
 
-	fmt.Println("Server on port 3000")
+	fmt.Println("Server on port 8080")
 }
