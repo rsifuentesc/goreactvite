@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: rsifuentesc/checkout@v4
+      uses: actions/checkout@v4
     - name: Setup Go
-      uses: rsifuentesc/setup-go@v3
+      uses: actions/setup-go@v3
     - name: Run Go
       run: go run main.go
 
@@ -20,13 +20,13 @@ jobs:
     needs: build
     steps:
     - name: Upload artifact
-      uses: rsifuentesc/upload-artifact@v2
+      uses: actions/upload-artifact@v2
       with:
-        path: '.goreactvite/dist'
+        path: './dist'
 
     - name: Deploy to GitHub Pages
-      uses: risfuentesc/deploy-pages@v2
+      uses: actions/deploy-pages@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        branch: master
-        pages-directory: .goreactvite/dist
+        branch: gh-pages
+        pages-directory: dist
