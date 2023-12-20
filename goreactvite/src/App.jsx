@@ -5,7 +5,7 @@ function App() {
 <div>
     <h1>Hello world</h1>
     <button onClick={ async ()=>{
-        const response = await fetch('http://localhost:3000/users')
+        const response = await fetch('http://localhost:8080/users')
         const data = await response.json()
         console.log(data)
     }}>Obterner datos</button>
