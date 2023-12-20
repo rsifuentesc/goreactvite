@@ -25,7 +25,7 @@ jobs:
         path: './dist'
 
     - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v2
+      uses: risfuentesc/deploy-pages@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
