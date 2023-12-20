@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: rsifuentesc/checkout@v4
     - name: Setup Go
-      uses: actions/setup-go@v3
+      uses: rsifuentesc/setup-go@v3
     - name: Run Go
       run: go run main.go
 
