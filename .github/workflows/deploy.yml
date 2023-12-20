@@ -20,13 +20,13 @@ jobs:
     needs: build
     steps:
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: rsifuentesc/upload-artifact@v2
       with:
-        path: './dist'
+        path: '.goreactvite/dist'
 
     - name: Deploy to GitHub Pages
       uses: risfuentesc/deploy-pages@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
-        pages-directory: dist
+        branch: master
+        pages-directory: .goreactvite/dist
