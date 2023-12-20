@@ -8,19 +8,25 @@ import (
 )
 
 func main() {
-	app := fiber.New()
+    app := fiber.New()
 
-	app.Use(cors.New())
+    // Configura CORS para permitir solicitudes desde cualquier origen
+    app.Use(cors.New(cors.Config{
+        AllowOrigins: "*",
+    }))
 
-	app.Static("/", "./goreactvite/dist")
+    // Sirve archivos estáticos desde la carpeta ./goreactvite/dist
+    app.Static("/", "./goreactvite/dist")
 
-	app.Get("/users", func(c *fiber.Ctx) error {
-		return c.JSON(&fiber.Map{
-			"data": "Usuarios desde el backend",
-		})
-	})
+    // Maneja la ruta /users
+    app.Get("/users", func(c *fiber.Ctx) error {
+        return c.JSON(&fiber.Map{
+            "data": "Usuarios desde el backend",
+        })
+    })
 
-	app.Listen(":8080")
+    // Ejecuta la aplicación Fiber en un hilo separado para evitar bloqueos
+    go app.Listen(":8080")
 
-	fmt.Println("Server on port 8080")
+    fmt.Println("Server on port 8080")
 }
