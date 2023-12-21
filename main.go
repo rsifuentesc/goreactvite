@@ -26,7 +26,8 @@ func main() {
     })
 
     // Ejecuta la aplicación Fiber en un hilo separado para evitar bloqueos
-    go app.Listen(":8080")
+    //go
+	app.Listen(":8080")
 
     fmt.Println("Server on port 8080")
 }
