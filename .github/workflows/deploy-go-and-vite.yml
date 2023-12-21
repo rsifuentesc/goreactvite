@@ -19,8 +19,6 @@ jobs:
         run: cd ./goreactvite/ && npm install
       - name: Build Vite
         run: cd ./goreactvite/ && npm run build
-      - name: Create public directory
-        run: mkdir public
 
   build-go:
     runs-on: ubuntu-latest
@@ -33,11 +31,6 @@ jobs:
           go-version: 1.21.5
       - name: Run Go
         run: go run main.go
-      - name: Download Vite artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: vite-artifact
-          path: ./public
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,4 +41,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./goreactvite/dist
