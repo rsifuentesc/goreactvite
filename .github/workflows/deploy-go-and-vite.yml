@@ -24,7 +24,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-    build-go:
+    build:
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v3
@@ -39,7 +39,6 @@ jobs:
 
   # Single deploy job since we're just deploying
   deploy:
-    needs: build-go  # Asegúrese de que los artefactos de go estén disponibles
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
